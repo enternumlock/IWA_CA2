@@ -1,0 +1,30 @@
+<%- include("./partials/header") %>
+
+<div class="ui main text container segment">
+    <div class="ui huge header">Student Name: <%= data.fName + "   " +data.lName %></div>
+    
+    <div class="ui top attached segment">
+        
+        <div class="ui top attached segment">
+            <h2>Student Result Information</h2>
+        </div>
+        
+        <div class="item">
+            
+            <h3>Roll No: <%= data.rollNo %></h3>
+            <h3>Programming: <%= data.programming %></h3>
+            <h3>Web development: <%= data.webdevelopment %></h3>
+            <h3>Networking: <%= data.networking %></h3>
+            <h3>Big data: <%= data.bigdatabase %></h3>
+            
+            <form style="display: inline;" action="/students/<%= data._id %>?_method=DELETE" method="POST">
+                <button  class="ui inverted red button" onclick="return alert('Are sure you want to delete this record?');"><i class="trash icon"></i>DELETE</button>
+                <a href="/students/<%= data._id %>/edit" class="ui inverted orange button" onclick="return alert('Are sure you want to update this record?');"><i class="edit icon"></i>UPDATE</a>
+                <a href="/students" class="ui inverted primary button"><i class="angle left icon"></i>BACK</a>
+            </form>
+
+        </div>
+    </div>        
+</div>
+
+<%- include("./partials/footer") %>

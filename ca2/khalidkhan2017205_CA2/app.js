@@ -1,5 +1,6 @@
 var express = require("express"),
     bodyParser = require("body-parser"),
+    methodOverride = require("method-override"),
     mongoose = require("mongoose"),
     StdDB = require("./models/studentDB");
 
@@ -20,6 +21,7 @@ mongoose.connect("mongodb+srv://khalid:pass2017205@mymongodbcluster-f4oa8.mongod
 app.set("view engine" , "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended:true}));
+app.use(methodOverride("_method"));
 
 // this redirects us to students route
 app.get("/", function(req,res){
@@ -53,10 +55,19 @@ app.post("/students", function(req,res){
     });
 });
 
+// Show route == it will take us to show template
+app.get("/students/:id" , function(req,res){
+    // res.send("SHOW PAGE")
+    StdDB.findById(req.params.id, function(err, foundstudent){
+        if(err){
+            res.redirect("/students");
+        }else{
+            res.render("show", {data: foundstudent});
+        }
+    });
+});
 
 
-
-// ***************************
 app.listen(3000, function(){
     console.log("SERVER RUNNING");
-})
+});
