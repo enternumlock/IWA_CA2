@@ -1,6 +1,7 @@
 var express = require("express"),
-    bodyPAerser = require("body-parser"),
-    mongoose = require("mongoose");
+    bodyParser = require("body-parser"),
+    mongoose = require("mongoose"),
+    StdDB = require("./models/studentDB");
 
 var app = express();
 
@@ -16,9 +17,12 @@ mongoose.connect("mongodb+srv://khalid:pass2017205@mymongodbcluster-f4oa8.mongod
 		console.log("ERROR: ", err.message);
 });
 
+app.set("view engine" , "ejs");
+app.use(express.static("public"));
+app.use(bodyParser.urlencoded({extended:true}));
 
 app.get("/" , function(req,res){
-    res.send("INDEX PAGE")
+    res.render("index");
 });
 
 
