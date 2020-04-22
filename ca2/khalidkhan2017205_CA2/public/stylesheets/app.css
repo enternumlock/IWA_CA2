@@ -1,0 +1,12 @@
+i.icon{
+   font-size: 1em; 
+}
+
+.container.main{
+   margin-top: 7.0em;
+}
+
+body{
+   background: rgb(63,94,251);
+   background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(70,252,238,0.958420868347339) 100%);
+}
