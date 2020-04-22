@@ -1,1 +1,56 @@
-<h1>This is index Page</h1>
+<%- include("./partials/header") %>
+
+<div class="ui main container">
+    <h1 style="text-align: center; margin-bottom: 10px;">Display All Student Records</h1>
+
+    <div class="ui grid stackable container">
+        <table class="ui red table" >
+    
+            <thead>
+                <tr>
+                    <th>Roll Number</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Programming</th>
+                    <th>Web Development</th>
+                    <th>Networking</th>
+                    <th>Big Data</th>
+                    <th></th> <!---->
+                    <th></th> <!---->
+                </tr>        
+            </thead>
+        
+            <tbody> 
+        
+                <% data.forEach(function(record){ %>
+                    <tr>
+                        <td><%= record.rollNo %></td>
+                        <td><%= record.fName %></td>
+                        <td><%= record.lName %></td>
+                        <td><%= record.programming %></td>
+                        <td><%= record.webdevelopment %></td>
+                        <td><%= record.networking %></td>
+                        <td><%= record.bigdatabase %></td>
+                        
+                        <td>
+                            <a class="ui inverted orange button" href="/students/<%= record._id %>/edit"><i class="edit icon"></i>UPDATE</a>
+                        </td>
+                        
+                        <td>
+                            <a class="ui inverted secondary button" href="/students/<%= record._id%>"><i class="info icon"></i> STUDENT INFO</a>
+                        </td>
+                    </tr>
+                <% }) %>
+                     
+                </tbody>
+                <a style="float: right;" class="ui green button" href="/students/new"><i class="plus icon"></i>ADD NEW STUDENT</a>    
+        </table>
+            
+    </div>
+    
+</div>
+
+
+<%- include("./partials/footer") %>
+
+

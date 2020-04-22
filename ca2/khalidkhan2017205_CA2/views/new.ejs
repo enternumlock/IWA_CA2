@@ -1,0 +1,48 @@
+<%- include("./partials/header") %>
+
+<div class="ui main text container segment">
+    <div style="text-align: center;" class="ui huge header">New Student Results Record</div>
+
+    <form class="ui form" action="/students" method="POST" autocomplete="off">
+        <div>
+            <label for="rollNo">Roll number</label>
+            <input id="rollNo" type="number" name="student[rollNo]" placeholder="Roll number" min="1" max="10000" required>
+        </div>
+
+        <div>
+            <label>First name</label>
+            <input type="text" name="student[fName]" placeholder="First name" required>
+        </div>
+
+        <div>
+            <label>Last name</label>
+            <input type="text" name="student[lName]" placeholder="Last name" required>
+        </div>
+
+        <div>
+            <label for="programming">Programming</label>
+            <input id="programming" type="number" name="student[programming]" placeholder="Programming" min="0" max="100" required>
+        </div>
+
+        <div>
+            <label for="webdevelopment">Web Development</label>
+            <input id="webdevelopment" type="number" name="student[webdevelopment]" placeholder="Web development" min="0" max="100" required>
+        </div>
+
+        <div>
+            <label for="networking">Networking</label>
+            <input id="networking" type="number" name="student[networking]" placeholder="Networking" min="0" max="100" required>
+        </div>
+        
+        <div>
+            <label for="bigdatabase">Big Data</label>
+            <input id="bigdatabase" type="number" name="student[bigdatabase]" placeholder="Big data" min="0" max="100"required>
+        </div>
+
+        <div>
+            <button style="margin-top: 10px;" class="ui inverted green button" type="submit"><i class="plus icon"></i>SUBMIT</button>
+            <a href="/students" class="ui inverted primary button"><i class="angle left icon"></i>BACK</a>
+        </div>
+        
+    </form>
+</div>
