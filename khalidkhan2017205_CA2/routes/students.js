@@ -10,21 +10,21 @@ router.get("/students" , function(req, res){
         if(err){
             console.log("ERROR : " + err);
         }else{
-            res.render("index", {data:myData} );
+            res.render("student/index", {data:myData} );
         }
     })
 });
 
 // new route == it will take us to new.ejs and dislay a form to fill
 router.get("/students/new" , function(req,res){
-    res.render("new");
+    res.render("student/new");
 });
 // create route == we will create new student record and redirect it to /students
 router.post("/students", function(req,res){
     // req.body.student.body = req.sanitize(req.body.student.body);
     StdDB.create(req.body.student, function(err, newStudent){
         if(err){
-            res.render("new");
+            res.render("student/new");
         }else{
             res.redirect("/students");
         }
@@ -38,7 +38,7 @@ router.get("/students/:id" , function(req,res){
         if(err){
             res.redirect("/students");
         }else{
-            res.render("show", {data: foundstudent});
+            res.render("student/show", {data: foundstudent});
         }
     });
 });
@@ -50,7 +50,7 @@ router.get("/students/:id/edit", function(req,res){
         if(err){
             res.redirect("/students");
         }else{
-            res.render("edit", {data: foundstudent});
+            res.render("student/edit", {data: foundstudent});
         }
     });
 });

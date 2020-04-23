@@ -1,5 +1,6 @@
 var express = require("express"),
     bodyParser = require("body-parser"),
+    path = require("path"),
     methodOverride = require("method-override"),
     mongoose = require("mongoose"),
     StdDB = require("./models/studentDB");
@@ -21,6 +22,7 @@ mongoose.connect("mongodb+srv://khalid:pass2017205@mymongodbcluster-f4oa8.mongod
 		console.log("ERROR: ", err.message);
 });
 
+app.set("views", path.join(__dirname, "/views/"));
 app.set("view engine" , "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended:true}));
