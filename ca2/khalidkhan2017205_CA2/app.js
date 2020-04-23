@@ -46,7 +46,7 @@ app.get("/students/new" , function(req,res){
 // create route == we will create new student record and redirect it to /students
 app.post("/students", function(req,res){
     
-    StdDB.create(req.body.student, function(err, newStudent){
+    StdDB.create(req.body.student, function(err){
         if(err){
             res.render("new");
         }else{
@@ -66,6 +66,32 @@ app.get("/students/:id" , function(req,res){
         }
     });
 });
+
+// =========================================>
+// Edit route == it will take us to Edit form
+app.get("/students/:id/edit", function(req,res){
+    // first find id of student
+    StdDB.findById(req.params.id, function(err, foundstudent){
+        if(err){
+            res.redirect("/students");
+        }else{
+            res.render("edit", {data: foundstudent});
+        }
+    });
+});
+
+// update route
+app.put("/students/:id", function(req,res){
+
+    StdDB.findByIdAndUpdate(req.params.id, req.body.student, function(err, updatedStudent){
+        if(err){
+            res.redirect("/students");
+        }else{
+            res.redirect("/students/" + req.params.id);
+        }
+    });
+});
+
 
 
 app.listen(3000, function(){

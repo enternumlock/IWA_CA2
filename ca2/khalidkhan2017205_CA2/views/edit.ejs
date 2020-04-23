@@ -1,0 +1,50 @@
+<%- include("./partials/header") %>
+<h1>EDIT PAGE</h1>
+
+<div class="ui main text container segment">
+    <div class="ui huge header">Student Name:  <%= data.fName + "   " +data.lName %></div>
+
+    <form class="ui form" action="/students/<%= data._id %>?_method=PUT" method="POST">
+        <div>
+            <label for="rollNo">Roll number</label>
+            <input id="rollNo" type="number" name="student[rollNo]" value="<%= data.rollNo %>" placeholder="Roll number" min="1" max="10000" required>
+        </div>
+
+        <div>
+            <label>First name</label>
+            <input type="text" name="student[fName]" value="<%= data.fName %>" placeholder="First name" required>
+        </div>
+
+        <div>
+            <label>Last name</label>
+            <input type="text" name="student[lName]" value="<%= data.lName %>" placeholder="Last name" required>
+        </div>
+
+        <div>
+            <label for="programming">Programming</label>
+            <input id="programming" type="number" name="student[programming]" value="<%= data.programming %>" placeholder="Programming" min="0" max="100" required>
+        </div>
+
+        <div>
+            <label for="webdevelopment">Web Development</label>
+            <input id="webdevelopment" type="number" name="student[webdevelopment]" value="<%= data.webdevelopment %>" placeholder="Web development" min="0" max="100" required>
+        </div>
+
+        <div>
+            <label for="networking">Networking</label>
+            <input id="networking" type="number" name="student[networking]" value="<%= data.networking %>" placeholder="Networking" min="0" max="100" required>
+        </div>
+
+        <div>
+            <label for="bigdatabase">Big Data</label>
+            <input id="bigdatabase" type="number" name="student[bigdatabase]" value="<%= data.bigdatabase %>" placeholder="Big data" min="0" max="100" required>
+        </div>
+
+        <div>
+            <button style="margin-top: 15px;" class="ui inverted orange button" type="submit"><i class="edit icon"></i>UPDATE</button>
+           
+            <a href="/students" class="ui inverted primary button"><i class="angle left icon"></i>BACK</a>
+        </div>
+
+    </form>
+</div>
