@@ -92,7 +92,16 @@ app.put("/students/:id", function(req,res){
     });
 });
 
-
+// Delete route
+app.delete("/students/:id", function(req,res){
+    StdDB.findByIdAndRemove(req.params.id , function(err){
+        if(err){
+            res.redirect("/students");
+        }else{
+            res.redirect("/students");
+        }
+    });
+});
 
 app.listen(3000, function(){
     console.log("SERVER RUNNING");
