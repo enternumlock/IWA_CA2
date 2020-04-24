@@ -3,7 +3,7 @@
 <div class="ui main text container segment">
     <div class="ui huge header">Student Name:  <%= data.fName + "   " +data.lName %></div>
 
-    <form class="ui form" action="/students/<%= data._id %>?_method=PUT" method="POST">
+    <form class="ui form" action="/students/<%= data._id %>?_method=PUT" method="POST" autocomplete="off">
         <div>
             <label for="rollNo">Roll number</label>
             <input id="rollNo" type="number" name="student[rollNo]" value="<%= data.rollNo %>" placeholder="Roll number" min="1" max="10000" required>
