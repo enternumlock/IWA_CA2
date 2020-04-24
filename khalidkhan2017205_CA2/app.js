@@ -1,17 +1,20 @@
-var express = require("express"),
-    bodyParser = require("body-parser"),
-    path = require("path"),
-    methodOverride = require("method-override"),
-    mongoose = require("mongoose"),
-    StdDB = require("./models/studentDB");
+var express         = require("express"),
+    bodyParser      = require("body-parser"),
+    path            = require("path"),
+    methodOverride  = require("method-override"),
+    mongoose        = require("mongoose");
 
-var app = express();
+    require("dotenv").config();
+    
+var StdDB           = require("./models/studentDB");
+
+var app             = express();
 
 //requring routes
-var studentRoutes    = require("./routes/students");
+var studentRoutes   = require("./routes/students");
 
   // create and connect to database
-mongoose.connect("mongodb+srv://khalid:pass2017205@mymongodbcluster-f4oa8.mongodb.net/studentDB?retryWrites=true&w=majority" , {
+mongoose.connect(process.env.MONGO_URI, {
 		useNewUrlParser: true,
 		useCreateIndex: true,
         useUnifiedTopology: true,
@@ -35,6 +38,6 @@ app.get("/", function(req,res){
 // use routes
 app.use(studentRoutes);
 
-app.listen(3000, function(){
+app.listen(process.env.PORT || 3000, process.env.IP || "0.0.0.0", function(){
     console.log("SERVER RUNNING");
 });
