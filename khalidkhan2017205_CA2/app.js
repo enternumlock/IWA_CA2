@@ -2,6 +2,7 @@ var express         = require("express"),
     bodyParser      = require("body-parser"),
     path            = require("path"),
     methodOverride  = require("method-override"),
+    expressSanitizer = require("express-sanitizer"),
     mongoose        = require("mongoose");
 
     require("dotenv").config();
@@ -29,6 +30,7 @@ app.set("views", path.join(__dirname, "/views/"));
 app.set("view engine" , "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended:true}));
+app.use(expressSanitizer());
 app.use(methodOverride("_method"));
 
 // this redirects us to students route

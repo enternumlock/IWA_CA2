@@ -3,7 +3,6 @@ var router  = express.Router();
 var StdDB   = require("../models/studentDB");
 
 // Routes
-
 // this take us to index.ejs page
 router.get("/students" , function(req, res){
     StdDB.find({}, function(err, myData){
@@ -21,7 +20,8 @@ router.get("/students/new" , function(req,res){
 });
 // create route == we will create new student record and redirect it to /students
 router.post("/students", function(req,res){
-    // req.body.student.body = req.sanitize(req.body.student.body);
+    
+    req.body.student.body = req.sanitize(req.body.student.body);
     StdDB.create(req.body.student, function(err, newStudent){
         if(err){
             res.render("student/new");
@@ -57,7 +57,7 @@ router.get("/students/:id/edit", function(req,res){
 
 // update route
 router.put("/students/:id", function(req,res){
-    // req.body.student.body = req.sanitize(req.body.student.body);
+    req.body.student.body = req.sanitize(req.body.student.body);
     StdDB.findByIdAndUpdate(req.params.id, req.body.student, function(err, updatedStudent){
         if(err){
             res.redirect("/students");
